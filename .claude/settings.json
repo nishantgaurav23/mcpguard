@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(cd /Users/nishantgaurav/Project/mcpguard*)",
+      "Bash(make *)",
+      "Bash(uv *)",
+      "Bash(python -m pytest *)",
+      "Bash(python -c *)",
+      "Bash(ruff *)",
+      "Bash(mypy *)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git add*)",
+      "Bash(git branch*)",
+      "Bash(find *)",
+      "Bash(wc *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(ls *)",
+      "Bash(pip list*)",
+      "Bash(pip-audit*)",
+      "Bash(which *)",
+      "Bash(python --version*)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)",
+      "Read(.env)"
+    ]
+  }
+}

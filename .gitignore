@@ -1,0 +1,30 @@
+# ── Python Artifacts ──────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# ── Virtual Environment ───────────────────────────────
+.venv/
+
+# ── Secrets ───────────────────────────────────────────
+.env
+
+# ── Tool Caches ───────────────────────────────────────
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ── IDE / Editor ──────────────────────────────────────
+.vscode/
+.idea/
+
+# ── Claude Code (local settings) ─────────────────────
+.claude/settings.local.json
