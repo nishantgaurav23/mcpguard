@@ -3,8 +3,8 @@
 
 # Environment
 venv:
-	@command -v uv >/dev/null 2>&1 || (echo "uv is required..." && exit 1)
-	uv venv
+	@command -v uv >/dev/null 2>&1 || (echo "uv is required. Install from https://github.com/astral-sh/uv" && exit 1)
+	@[ -d .venv ] || uv venv
 
 install: venv
 	uv sync

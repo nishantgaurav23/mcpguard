@@ -47,7 +47,15 @@ class TestPyprojectStructure:
         data = _load_pyproject()
         deps = data["project"]["dependencies"]
         dep_names = [d.split(">")[0].split("[")[0].lower() for d in deps]
-        required = ["pydantic-ai", "typer", "rich", "httpx", "logfire", "python-dotenv"]
+        required = [
+            "pydantic",
+            "pydantic-ai",
+            "pydantic-settings",
+            "typer",
+            "rich",
+            "httpx",
+            "logfire",
+        ]
         for req in required:
             assert req in dep_names, f"Missing runtime dep: {req}"
 
