@@ -52,8 +52,20 @@ Run `/project:verify-spec {spec_id}`
 Roadmap status: done
 ```
 
+## Step 6: Phase Review (if last spec in phase)
+
+After Step 5, check `roadmap.md`: are ALL specs in this spec's phase now `done`?
+
+- If **YES** (last spec in the phase): Run `/project:phase-review {phase_number}` automatically.
+- If **NO** (other specs remain): Skip. Report which specs are still pending.
+
+This ensures every completed phase gets a comprehensive debug, dependency, optimization, and security sweep.
+
+---
+
 ## Rules
 1. Parse spec_id from $ARGUMENTS (first arg, e.g., S1.1)
 2. On any step failure, stop and report -- do not blindly continue
 3. Always update checklist.md and roadmap.md as each sub-command requires
 4. Do NOT ask for permission between steps -- only stop on failure
+5. Phase review is automatic when the last spec completes -- do not skip it

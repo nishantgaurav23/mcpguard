@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="layer1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e8f5e9"/>
+      <stop offset="100%" style="stop-color:#c8e6c9"/>
+    </linearGradient>
+    <linearGradient id="layer2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fff3e0"/>
+      <stop offset="100%" style="stop-color:#ffe0b2"/>
+    </linearGradient>
+    <linearGradient id="layer3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e3f2fd"/>
+      <stop offset="100%" style="stop-color:#bbdefb"/>
+    </linearGradient>
+    <linearGradient id="layer4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fce4ec"/>
+      <stop offset="100%" style="stop-color:#f8bbd0"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="680" rx="8" fill="#fafafa"/>
+
+  <!-- Title -->
+  <rect x="20" y="15" width="860" height="45" rx="6" fill="url(#headerGrad)" filter="url(#shadow)"/>
+  <text x="450" y="44" text-anchor="middle" fill="white" font-size="18" font-weight="700">MCPGuard Architecture -- 4-Layer Detection Pipeline</text>
+
+  <!-- User Interface Row -->
+  <rect x="30" y="75" width="400" height="70" rx="6" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="230" y="95" text-anchor="middle" fill="#333" font-size="12" font-weight="700">CLI (Typer + Rich)</text>
+  <text x="230" y="112" text-anchor="middle" fill="#666" font-size="10">mcpguard scan | baseline | eval | serve</text>
+  <text x="230" y="127" text-anchor="middle" fill="#666" font-size="10">Output: Rich table | JSON | SARIF</text>
+  <text x="230" y="139" text-anchor="middle" fill="#888" font-size="9">Exit codes: 0 clean | 1 findings | 2 error</text>
+
+  <rect x="470" y="75" width="400" height="70" rx="6" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="670" y="95" text-anchor="middle" fill="#333" font-size="12" font-weight="700">MCP Server (FastMCP)</text>
+  <text x="670" y="112" text-anchor="middle" fill="#666" font-size="10">scan_server | check_tool | list_rules</text>
+  <text x="670" y="127" text-anchor="middle" fill="#666" font-size="10">Claude Desktop / Cursor integration</text>
+  <text x="670" y="139" text-anchor="middle" fill="#888" font-size="9">Structured JSON responses via MCP protocol</text>
+
+  <!-- Arrow down -->
+  <line x1="450" y1="145" x2="450" y2="165" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <defs><marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#666"/></marker></defs>
+
+  <!-- Scan Orchestrator -->
+  <rect x="100" y="165" width="700" height="55" rx="6" fill="#ede7f6" stroke="#7e57c2" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="450" y="187" text-anchor="middle" fill="#4527a0" font-size="13" font-weight="700">Scan Orchestrator (scanner.py)</text>
+  <text x="450" y="203" text-anchor="middle" fill="#5e35b1" font-size="10">Connect -> Enumerate tools/resources -> Run detectors per tool -> Generate report</text>
+
+  <!-- Arrow down -->
+  <line x1="450" y1="220" x2="450" y2="240" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Detection Pipeline -->
+  <rect x="30" y="240" width="520" height="390" rx="6" fill="white" stroke="#bdbdbd" stroke-width="1" filter="url(#shadow)"/>
+  <text x="290" y="260" text-anchor="middle" fill="#333" font-size="13" font-weight="700">Detection Pipeline</text>
+
+  <!-- Layer 1 -->
+  <rect x="45" y="272" width="490" height="72" rx="5" fill="url(#layer1)" stroke="#66bb6a" stroke-width="1"/>
+  <text x="60" y="290" fill="#2e7d32" font-size="11" font-weight="700">Layer 1: Static Rules ($0)</text>
+  <text x="60" y="305" fill="#388e3c" font-size="10">Poisoning detector -- directive tags, exfiltration patterns</text>
+  <text x="60" y="318" fill="#388e3c" font-size="10">Credential detector -- 25+ secret types (AWS, GitHub, Stripe...)</text>
+  <text x="60" y="331" fill="#388e3c" font-size="10">Unicode detector -- invisible characters (U+200B, U+FEFF...)</text>
+
+  <!-- Layer 2 -->
+  <rect x="45" y="352" width="490" height="72" rx="5" fill="url(#layer2)" stroke="#ffa726" stroke-width="1"/>
+  <text x="60" y="370" fill="#e65100" font-size="11" font-weight="700">Layer 2: Schema Heuristics ($0)</text>
+  <text x="60" y="385" fill="#ef6c00" font-size="10">Full-schema detector -- CyberArk-style param name attacks</text>
+  <text x="60" y="398" fill="#ef6c00" font-size="10">SSRF detector -- URL params without constraints</text>
+  <text x="60" y="411" fill="#ef6c00" font-size="10">Command injection -- shell metacharacters, exec patterns</text>
+
+  <!-- Layer 3 -->
+  <rect x="45" y="432" width="490" height="58" rx="5" fill="url(#layer3)" stroke="#42a5f5" stroke-width="1"/>
+  <text x="60" y="450" fill="#1565c0" font-size="11" font-weight="700">Layer 3: LLM Semantic Analysis (~$0.02/scan)</text>
+  <text x="60" y="465" fill="#1976d2" font-size="10">PydanticAI agent -- Gemini 2.5 Flash (free) / Groq fallback</text>
+  <text x="60" y="478" fill="#1976d2" font-size="10">Ambiguous findings only (~10-20% of tools)</text>
+
+  <!-- Layer 4 -->
+  <rect x="45" y="498" width="490" height="58" rx="5" fill="url(#layer4)" stroke="#ef5350" stroke-width="1"/>
+  <text x="60" y="516" fill="#c62828" font-size="11" font-weight="700">Layer 4: Integrity Verification ($0)</text>
+  <text x="60" y="531" fill="#d32f2f" font-size="10">Rug pull detector -- SHA-256 hash pinning + baseline compare</text>
+  <text x="60" y="544" fill="#d32f2f" font-size="10">Auth compliance -- OAuth 2.1, transport security</text>
+
+  <!-- Arrow between pipeline and detector result -->
+  <line x1="290" y1="564" x2="290" y2="585" stroke="#666" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- Report output -->
+  <rect x="45" y="585" width="490" height="35" rx="5" fill="#e8eaf6" stroke="#5c6bc0" stroke-width="1"/>
+  <text x="290" y="607" text-anchor="middle" fill="#283593" font-size="11" font-weight="700">ServerAuditReport (Pydantic) -- findings, risk score, OWASP mapping, remediation</text>
+
+  <!-- Right side: Target + Config -->
+  <rect x="580" y="240" width="290" height="140" rx="6" fill="white" stroke="#bdbdbd" stroke-width="1" filter="url(#shadow)"/>
+  <text x="725" y="260" text-anchor="middle" fill="#333" font-size="12" font-weight="700">Target MCP Server</text>
+  <text x="600" y="280" fill="#555" font-size="10">Connected via:</text>
+  <text x="610" y="295" fill="#666" font-size="10">MCPServerStdio (local)</text>
+  <text x="610" y="310" fill="#666" font-size="10">MCPServerStreamableHTTP (remote)</text>
+  <text x="600" y="330" fill="#555" font-size="10">Introspected:</text>
+  <text x="610" y="345" fill="#666" font-size="10">list_tools() | list_resources()</text>
+  <text x="610" y="360" fill="#666" font-size="10">capabilities | server_info</text>
+
+  <!-- Config box -->
+  <rect x="580" y="400" width="290" height="100" rx="6" fill="white" stroke="#bdbdbd" stroke-width="1" filter="url(#shadow)"/>
+  <text x="725" y="420" text-anchor="middle" fill="#333" font-size="12" font-weight="700">Configuration (Phase 1)</text>
+  <text x="600" y="440" fill="#666" font-size="10">Settings -- .env (SecretStr masked)</text>
+  <text x="600" y="455" fill="#666" font-size="10">ScanConfig -- frozen, immutable</text>
+  <text x="600" y="470" fill="#666" font-size="10">ScanState -- mutable accumulator</text>
+  <text x="600" y="485" fill="#666" font-size="10">Logging -- structlog + optional Logfire</text>
+
+  <!-- Observability box -->
+  <rect x="580" y="520" width="290" height="60" rx="6" fill="white" stroke="#bdbdbd" stroke-width="1" filter="url(#shadow)"/>
+  <text x="725" y="540" text-anchor="middle" fill="#333" font-size="12" font-weight="700">Observability</text>
+  <text x="600" y="558" fill="#666" font-size="10">Pydantic Logfire (OTel, 10M spans/mo free)</text>
+  <text x="600" y="573" fill="#666" font-size="10">Cost tracking per scan</text>
+
+  <!-- Connecting arrows -->
+  <line x1="550" y1="310" x2="580" y2="310" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="550" y1="450" x2="580" y2="450" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Footer -->
+  <text x="450" y="660" text-anchor="middle" fill="#999" font-size="10">MCPGuard v0.1.0 -- AI-Powered MCP Security Auditor -- MIT License</text>
+</svg>
