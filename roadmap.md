@@ -88,9 +88,9 @@ Output: `make check` runs lint + type-check + test -- all green.
 | Spec | Spec Location | Depends On | Location | Feature | Notes | Status |
 |------|--------------|-----------|----------|---------|-------|--------|
 | S1.1 | `specs/spec-S1.1-dependency-declaration/` | -- | `pyproject.toml`, `.env.example` | Dependency declaration | Runtime: pydantic-ai[mcp], typer, rich, httpx, logfire. Dev: pytest, pytest-asyncio, pytest-cov, ruff, mypy. Entry point: mcpguard CLI. Hatchling build backend | done |
-| S1.2 | `specs/spec-S1.2-developer-commands/` | -- | `Makefile` | Developer commands | Targets: venv, install, install-dev, check, test, lint, typecheck, format, eval, serve, scan | pending |
-| S1.3 | `specs/spec-S1.3-config/` | S1.1 | `src/mcpguard/models/config.py` | ScanConfig + settings | ScanConfig dataclass: target, severity_threshold, enable_llm, enable_auth_check, baseline_path, findings, llm_calls. Environment: GEMINI_API_KEY, GROQ_API_KEY, LOGFIRE_TOKEN. All from .env | pending |
-| S1.4 | `specs/spec-S1.4-package-init/` | S1.1 | `src/mcpguard/__init__.py` | Package initialization | __version__, package metadata. Verify `python -m mcpguard` works | pending |
+| S1.2 | `specs/spec-S1.2-developer-commands/` | -- | `Makefile` | Developer commands | Targets: venv, install, install-dev, check, test, lint, typecheck, format, eval, serve, scan | done |
+| S1.3 | `specs/spec-S1.3-config/` | S1.1 | `src/mcpguard/models/config.py` | ScanConfig + settings | ScanConfig dataclass: target, severity_threshold, enable_llm, enable_auth_check, baseline_path, findings, llm_calls. Environment: GEMINI_API_KEY, GROQ_API_KEY, LOGFIRE_TOKEN. All from .env | done |
+| S1.4 | `specs/spec-S1.4-package-init/` | S1.1 | `src/mcpguard/__init__.py` | Package initialization | __version__, package metadata. Verify `python -m mcpguard` works | done |
 | S1.5 | `specs/spec-S1.5-logging-setup/` | S1.3 | `src/mcpguard/utils/logging.py` | Structured logging | Logfire or structlog setup. LOG_LEVEL from env. Span context for scan tracing | pending |
 
 ---
@@ -240,9 +240,9 @@ CI/CD, PyPI publishing, MCP registry, documentation.
 | Spec | Phase | Location | Feature | Spec Location | Status |
 |------|-------|----------|---------|--------------|--------|
 | S1.1 | Project Foundation | `pyproject.toml`, `.env.example` | Dependency declaration | `specs/spec-S1.1-dependency-declaration/` | done |
-| S1.2 | Project Foundation | `Makefile` | Developer commands | `specs/spec-S1.2-developer-commands/` | pending |
-| S1.3 | Project Foundation | `src/mcpguard/models/config.py` | ScanConfig + settings | `specs/spec-S1.3-config/` | pending |
-| S1.4 | Project Foundation | `src/mcpguard/__init__.py` | Package initialization | `specs/spec-S1.4-package-init/` | pending |
+| S1.2 | Project Foundation | `Makefile` | Developer commands | `specs/spec-S1.2-developer-commands/` | done |
+| S1.3 | Project Foundation | `src/mcpguard/models/config.py` | ScanConfig + settings | `specs/spec-S1.3-config/` | done |
+| S1.4 | Project Foundation | `src/mcpguard/__init__.py` | Package initialization | `specs/spec-S1.4-package-init/` | done |
 | S1.5 | Project Foundation | `src/mcpguard/utils/logging.py` | Structured logging | `specs/spec-S1.5-logging-setup/` | pending |
 | S2.1 | Data Models | `src/mcpguard/models/findings.py` | VulnerabilityFinding + ServerAuditReport | `specs/spec-S2.1-finding-models/` | pending |
 | S2.2 | Data Models | `src/mcpguard/models/semantic.py` | SemanticAnalysis model | `specs/spec-S2.2-semantic-models/` | pending |
