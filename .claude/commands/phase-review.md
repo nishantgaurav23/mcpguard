@@ -141,6 +141,14 @@ If any CRITICAL issues remain unfixed, status is NEEDS ATTENTION with action ite
 
 ---
 
+## Step 8: Save Review
+
+Save the full report (Step 7 output + all findings tables) to `docs/reviews/phase-{N}-review.md`. Create the `docs/reviews/` directory if it doesn't exist.
+
+This is the ONLY location for phase-level review content. Do NOT save to spec folders or other docs locations.
+
+---
+
 ## Rules
 
 1. Do NOT refactor architecture or add features -- this is review and hardening only
@@ -148,3 +156,4 @@ If any CRITICAL issues remain unfixed, status is NEEDS ATTENTION with action ite
 3. All fixes must pass existing tests -- no regressions
 4. Run `make check` after ALL changes to verify nothing broke
 5. Keep changes minimal and focused -- this is a review, not a rewrite
+6. ALWAYS save the review to `docs/reviews/phase-{N}-review.md` -- never skip Step 8

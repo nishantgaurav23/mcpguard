@@ -27,3 +27,4 @@ Change status from `pending` to `spec-written` in **both** Phase table and Maste
 2. Every FR must map to at least one test
 3. Spec folder path must match roadmap
 4. Always update roadmap.md status to `spec-written`
+5. Do NOT create `learning-log.md` during spec creation -- it is created automatically by learning commands (`/grillme`, `/learn-predict`, `/learn-mimic`, etc.) when they run against this spec
